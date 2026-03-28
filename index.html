@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mochi - Your Sweet, Cozy Cookbook</title>
+  <meta name="description" content="Save recipes from anywhere. Cook without the chaos. Mochi is the cute, cozy recipe app for iOS.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #F7EFEA;
+      --tan: #EDE0D7;
+      --warm: #DABFAC;
+      --pink: #E8998D;
+      --pink-hover: #D9877A;
+      --text: #4A3728;
+      --text-light: #7A6558;
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── CTA Button ────────────────────────── */
+    .cta {
+      display: inline-block;
+      background: var(--pink);
+      color: #fff;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      padding: 14px 36px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .cta:hover {
+      background: var(--pink-hover);
+      transform: translateY(-2px);
+    }
+
+    /* ── Hero ──────────────────────────────── */
+    .hero {
+      background: var(--cream);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding: 80px 24px 120px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-logo {
+      width: 220px;
+      margin-bottom: 24px;
+    }
+
+    .hero-tagline {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-light);
+      font-weight: 400;
+      margin-bottom: 36px;
+      max-width: 420px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.5;
+    }
+
+    .hero-mascot {
+      width: 140px;
+      margin-top: 48px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* ── Screenshot Showcase ──────────────── */
+    .showcase {
+      background: var(--tan);
+      padding: 80px 24px;
+    }
+
+    .showcase-grid {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      padding: 8px 0;
+    }
+
+    .showcase-grid img {
+      width: 220px;
+      flex-shrink: 0;
+      border-radius: 24px;
+      box-shadow: 0 8px 30px rgba(74, 55, 40, 0.12);
+    }
+
+    /* ── Feature Sections ─────────────────── */
+    .feature {
+      padding: 80px 24px;
+    }
+
+    .feature--cream { background: var(--cream); }
+    .feature--tan   { background: var(--tan); }
+
+    .feature-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .feature-text {
+      max-width: 440px;
+    }
+
+    .feature-text h2 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .feature-text ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .feature-text li {
+      font-size: 1.05rem;
+      color: var(--text-light);
+      padding-left: 24px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .feature-text li::before {
+      content: "~";
+      position: absolute;
+      left: 0;
+      color: var(--pink);
+      font-weight: 700;
+    }
+
+    .feature-img img {
+      width: 260px;
+      border-radius: 24px;
+      box-shadow: 0 8px 30px rgba(74, 55, 40, 0.12);
+    }
+
+    /* ── Footer CTA ───────────────────────── */
+    .footer {
+      background: var(--warm);
+      text-align: center;
+      padding: 80px 24px 48px;
+    }
+
+    .footer-mascot {
+      width: 120px;
+      margin-bottom: 24px;
+    }
+
+    .footer h2 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      margin-bottom: 24px;
+    }
+
+    .footer .cta {
+      margin-bottom: 48px;
+    }
+
+    .footer-copy {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-top: 48px;
+    }
+
+    /* ── Fade-in Animation ────────────────── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Responsive (Desktop ≥768px) ──────── */
+    @media (min-width: 768px) {
+      .hero-tagline {
+        font-size: 3rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.3rem;
+      }
+
+      .hero-logo {
+        width: 280px;
+      }
+
+      .hero-mascot {
+        width: 170px;
+      }
+
+      .showcase-grid img {
+        width: 280px;
+      }
+
+      .feature-inner {
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .feature-inner--reverse {
+        flex-direction: row-reverse;
+      }
+
+      .feature-text {
+        flex: 1;
+      }
+
+      .feature-img {
+        flex: 0 0 auto;
+      }
+
+      .feature-img img {
+        width: 300px;
+      }
+
+      .feature-text h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <img src="MochiImages/MochiLogoTitleTransparent.png" alt="Mochi logo" class="hero-logo">
+      <h1 class="hero-tagline">Your sweet, cozy cookbook.</h1>
+      <p class="hero-subtitle">Save recipes from anywhere. Cook without the chaos.</p>
+      <a href="#" class="cta">Download on the App Store</a>
+      <div>
+        <img src="MochiImages/MochiCharacter.png" alt="Mochi mascot" class="hero-mascot">
+      </div>
+    </div>
+  </section>
+
+  <!-- Screenshot Showcase -->
+  <section class="showcase">
+    <div class="container">
+      <div class="showcase-grid">
+        <img src="MochiImages/IMG_2841.png" alt="Mochi home screen">
+        <img src="MochiImages/IMG_2845.png" alt="Mochi recipe detail">
+        <img src="MochiImages/IMG_2843.png" alt="Mochi meal plan">
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature: Import -->
+  <section class="feature feature--cream">
+    <div class="feature-inner fade-in">
+      <div class="feature-text">
+        <h2>Save recipes from anywhere</h2>
+        <ul>
+          <li>Share extension grabs recipes from any app</li>
+          <li>Paste a URL and Mochi scrapes the recipe</li>
+          <li>Snap a photo to scan printed recipes</li>
+          <li>Even reads handwritten recipe cards</li>
+        </ul>
+      </div>
+      <div class="feature-img">
+        <img src="MochiImages/IMG_2841.png" alt="Mochi home screen showing saved recipes">
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature: Cooking -->
+  <section class="feature feature--tan">
+    <div class="feature-inner feature-inner--reverse fade-in">
+      <div class="feature-text">
+        <h2>Cook without the chaos</h2>
+        <ul>
+          <li>Messy Hands mode keeps the screen alive</li>
+          <li>Smart timers built right into the steps</li>
+          <li>Ingredient highlighting so nothing gets missed</li>
+        </ul>
+      </div>
+      <div class="feature-img">
+        <img src="MochiImages/IMG_2845.png" alt="Mochi recipe detail view">
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature: Organization -->
+  <section class="feature feature--cream">
+    <div class="feature-inner fade-in">
+      <div class="feature-text">
+        <h2>Plan meals, not stress</h2>
+        <ul>
+          <li>Drag-and-drop weekly meal planner</li>
+          <li>Organize with tags and folders</li>
+          <li>Search by ingredients you already have</li>
+          <li>Scale servings up or down instantly</li>
+        </ul>
+      </div>
+      <div class="feature-img">
+        <img src="MochiImages/IMG_2843.png" alt="Mochi meal planner view">
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer CTA -->
+  <footer class="footer">
+    <img src="MochiImages/MochiCharacter.png" alt="Mochi mascot" class="footer-mascot">
+    <h2>Ready to start cooking?</h2>
+    <a href="#" class="cta">Download on the App Store</a>
+    <p class="footer-copy">&copy; 2026 Mochi. Made with love and a little bit of rice flour.</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+  </script>
+
+</body>
+</html>
